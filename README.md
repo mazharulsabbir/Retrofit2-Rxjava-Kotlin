@@ -15,3 +15,8 @@
     //rx-java
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rx_java2_android"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rx_java2_java"
+    
+### Versions:
+    ext.retrofit_version='2.6.2'
+    ext.rx_java2_android = '2.1.1'
+    ext.rx_java2_java = '2.2.15'
