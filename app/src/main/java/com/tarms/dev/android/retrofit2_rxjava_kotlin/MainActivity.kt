@@ -2,6 +2,8 @@ package com.tarms.dev.android.retrofit2_rxjava_kotlin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -35,8 +37,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData(posts: List<Post>?) {
-        for (i in 0..posts!!.size)
-            Logger.getLogger(MainActivity::class.java.name).warning("   #Title: ${posts[i].title}")
+//        for (i in 0..posts!!.size)
+//            Logger.getLogger(MainActivity::class.java.name).warning("   #Title: ${posts[i].title}")
+        val recyclerView = findViewById<RecyclerView>(R.id.post_list)
+        val postListAdapter = posts?.let { PostListAdapter(it) }
+        recyclerView.apply {
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(applicationContext)
+            adapter = postListAdapter
+        }
+
     }
 
     override fun onDestroy() {
